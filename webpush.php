@@ -23,6 +23,7 @@ class WebPushPlugin extends Plugin
               appId: "' . $this->config->get('plugins.webpush.app_id') . '",
               safari_web_id: "' . $this->config->get('plugins.webpush.safari_id') . '",
               autoRegister: ' . (($this->config->get('plugins.webpush.auto_prompt') == 1) ? 'true' : 'false') . ',
+              allowLocalhostAsSecureOrigin: true,
               notifyButton: {
                 enable: ' . (($this->config->get('plugins.webpush.bell') == 1) ? 'true' : 'false') . ',
                 size: "' . $this->config->get('plugins.webpush.bell_size') . '",
@@ -33,7 +34,7 @@ class WebPushPlugin extends Plugin
                     left: "' . $this->config->get('plugins.webpush.left_offset') . '",
                     right: "' . $this->config->get('plugins.webpush.right_offset') . '",
                 },
-                prenotify: true,
+                prenotify: ' . (($this->config->get('plugins.webpush.bell_unread') == 1) ? 'true' : 'false') . ',
                 showCredit: false,
                 text: {
                     "tip.state.unsubscribed": "' . $this->config->get('plugins.webpush.unsubscribed') . '",
@@ -49,7 +50,6 @@ class WebPushPlugin extends Plugin
                     "dialog.blocked.title":  "' . $this->config->get('plugins.webpush.blocked_dialog_title') . '",
                     "dialog.blocked.message": "' . $this->config->get('plugins.webpush.blocked_dialog_message') . '",
                 },
-
                 displayPredicate: function() {
                     return OneSignal.isPushNotificationsEnabled()
                         .then(function(isPushEnabled) {

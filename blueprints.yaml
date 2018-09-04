@@ -73,14 +73,6 @@ form:
             options:
               1: Enabled
               0: Disabled
-          bell_subscribed:
-            type: toggle
-            label: Show the Subscription Bell after users have subscribed
-            highlight: 1
-            default: 1
-            options:
-              1: Enabled
-              0: Disabled
           bell_unread:
             type: toggle
             label: Show first-time site visitors an unread message icon
