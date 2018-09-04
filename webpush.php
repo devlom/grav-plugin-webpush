@@ -15,11 +15,11 @@ class WebPushPlugin extends Plugin
     }
     public function onPluginsInitialized()
     {
-        require_once __DIR__ . '/tweets.php';
+
     }
     public function onTwigTemplatePaths()
     {
-        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
+        
     }
 
     public function onTwigSiteVariables()

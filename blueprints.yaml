@@ -1,27 +1,133 @@
 name: Web Push Notifications
 version: 0.1.0
-description: Add web push notifications based on OneSignal service to your grav project.
+description: Add web push notifications based on OneSignal service for your grav project.
 icon: bell
 author:
   name: Devlom
   email: info@devlom.com
 homepage: https://github.com/Devlom/grav-plugin-webpush
 keywords: grav, plugin, onesignal, web push notifications, notifications, push
-bugs: https://github.com/hexplor/grav-plugin-webpush/issues
-docs: https://github.com/hexplor/grav-plugin-webpush/blob/develop/README.md
+bugs: https://github.com/Devlom/grav-plugin-webpush/issues
+docs: https://github.com/Devlom/grav-plugin-webpush/blob/develop/README.md
 license: MIT
 
 form:
   validation: strict
   fields:
-    enabled:
-      type: toggle
-      label: Plugin status
-      highlight: 1
-      default: 0
-      options:
-        1: Enabled
-        0: Disabled
-      validate:
-        type: bool
+    general:
+        type: section
+        title: General
+        underline: true
+        fields:
+          enabled:
+            type: toggle
+            label: Plugin status
+            highlight: 1
+            default: 0
+            options:
+              1: Enabled
+              0: Disabled
+            validate:
+              type: bool
+    account:
+        type: section
+        title: Account Settings
+        underline: true
 
+        fields:
+          app_id:
+            type: text
+            label: App ID
+            help: Your 36 character alphanumeric app ID. You can find this in App Settings > Keys & IDs.
+          rest_id:
+            type: text
+            label: REST API Key
+            help: Your 48 character alphanumeric REST API Key. You can find this in App Settings > Keys & IDs.
+          safari_id:
+            type: text
+            label: Safari Web ID
+            help: Your Safari Web ID. You can find this on Setup > Safari Push > Step 5.
+          notification_title:
+            type: text
+            label: Notification Title
+            help: The notification title to use for all outgoing notifications. Defaults to your site's title.
+
+
+
+    prompt:
+        type: section
+        title: Prompt Settings & Subscription Bell
+        underline: true
+        fields:
+          auto_prompt:
+            type: toggle
+            label: Automatically prompt new site visitors to subscribe to push notifications 
+            highlight: 1
+            default: 1
+            options:
+              1: Enabled
+              0: Disabled
+          bell:
+            type: toggle
+            label: Enable the Subscription Bell
+            highlight: 1
+            default: 1
+            options:
+              1: Enabled
+              0: Disabled
+          bell_subscribed:
+            type: toggle
+            label: Show the Subscription Bell after users have subscribed
+            highlight: 1
+            default: 1
+            options:
+              1: Enabled
+              0: Disabled
+          bell_unread:
+            type: toggle
+            label: Show first-time site visitors an unread message icon
+            highlight: 1
+            default: 1
+            options:
+              1: Enabled
+              0: Disabled
+          bell_size:
+            type: select
+            label: Bell Size
+            highlight: small
+            default: small
+            options:
+              small: Small
+              medium: Medium
+              large: Large
+          bell_position:
+            type: select
+            label: Bell Position
+            highlight: small
+            default: small
+            options:
+              bottom-left: Bottom Left
+              bottom-right: Bottom Right
+          bell_theme:
+            type: select
+            label: Bell Theme
+            highlight: red
+            default: red
+            options:
+              red: Red
+              white: White
+          bottom_offset:
+            type: text
+            label: Bell Bottom Offset
+            help: The distance to offset the Subscription Bell from the bottom of the page. For example, <code>20px</code> is the default value.
+            default: 20px
+          left_offset:
+            type: text
+            label: Bell Left Offset
+            help: The distance to offset the Subscription Bell from the left of the page. For example, <code>20px</code> is the default value.
+            default: 20px
+          right_offset:
+            type: text
+            label: Bell Right Offset
+            help: The distance to offset the Subscription Bell from the right of the page. For example, <code>20px</code> is the default value.
+            default: 20px

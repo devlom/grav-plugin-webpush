@@ -14,7 +14,7 @@ The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgra
 * Automatic Delivery
 * Supports Chrome, Firefox, Safari, Microsoft Edge, Opera, Yandex, Samsung Browser, UC Browser, Interner Explorter and all Android browsers.
 
-## Why should you use Web Push Notifications – what are the advantages?\
+## Why should you use Web Push Notifications – what are the advantages?
 * WEB-SCALE REACH - Chrome, Firefox, and Safari combined have a market share of 75%+, meaning the reach of web push notifications is nearly a billion users.
 * NO NEED FOR ANDROID APP - Web push notifications work exactly like the native mobile push on Android, so you don’t have to create a mobile app to send native push notifications.
 * ACCESS TO USERS WHO ARE NOT ON YOUR WEBSITE - Using web push notifications, you can reach out to those users who are not on your website.
