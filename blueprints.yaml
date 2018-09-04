@@ -1,0 +1,27 @@
+name: Web Push Notifications
+version: 0.1.0
+description: Add web push notifications based on OneSignal service to your grav project.
+icon: bell
+author:
+  name: Devlom
+  email: info@devlom.com
+homepage: https://github.com/Devlom/grav-plugin-webpush
+keywords: grav, plugin, onesignal, web push notifications, notifications, push
+bugs: https://github.com/hexplor/grav-plugin-webpush/issues
+docs: https://github.com/hexplor/grav-plugin-webpush/blob/develop/README.md
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
