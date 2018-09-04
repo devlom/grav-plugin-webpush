@@ -3,9 +3,9 @@
 ![Web Push Notifications](readme.png)
 
 
-The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgrav/grav). Web push notifications are messages that come from a website. You get them on your desktop or device even when the website is not open in your browser. It is a new marketing channel to re engage your site visitors without knowing their email or other contact details. All major browsers support Web Push. Android devices may also receive Web Push notifications, in addition to notifications from apps.
+The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgrav/grav) based on [OneSignal](http://onesignal.com) service. Web push notifications are messages that come from a website. You get them on your desktop or device even when the website is not open in your browser. It is a new marketing channel to re engage your site visitors without knowing their email or other contact details. All major browsers support Web Push. Android devices may also receive Web Push notifications, in addition to notifications from apps.
 
-## Some 
+## Some of OneSignal features
 * 15 Minute Setup
 * Real Time Tracking
 * Incredibly Scalable
@@ -13,6 +13,17 @@ The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgra
 * Segmentation Targeting
 * Automatic Delivery
 * Supports Chrome, Firefox, Safari, Microsoft Edge, Opera, Yandex, Samsung Browser, UC Browser, Interner Explorter and all Android browsers.
+
+## Why should you use Web Push Notifications – what are the advantages?\
+* WEB-SCALE REACH - Chrome, Firefox, and Safari combined have a market share of 75%+, meaning the reach of web push notifications is nearly a billion users.
+* NO NEED FOR ANDROID APP - Web push notifications work exactly like the native mobile push on Android, so you don’t have to create a mobile app to send native push notifications.
+* ACCESS TO USERS WHO ARE NOT ON YOUR WEBSITE - Using web push notifications, you can reach out to those users who are not on your website.
+* RE-ENGAGEMENT WITHOUT CONTACT DETAILS - Web push notifications don’t need a user’s email or other contact details.
+* GREATER OPT-IN RATE - It's easier for users to sign up for Web Push than email, which results in higher opt-ins than email.
+* LOWER UNSUBSCRIBE / OPT-OUT RATES - Studies have shown that less than 10% of the subscribers who opted for notifications from a site unsubscribed in a year.
+* BETTER DELIVERY - Emails sometimes fail to deliver or get marked as spam, while notifications have more prompt and assured delivery.
+* HIGHER CONVERSION RATES - Studies have shown that web push notifications have 30 times higher conversion when compared with email.
+* STAY TOP OF MIND - Sending notifications even when the users are not on your website helps you stay top of mind with users, especially if they've previously engaged (such as adding content to a cart on your site).
 
 ## Installation
 
