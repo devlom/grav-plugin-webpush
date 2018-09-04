@@ -1,0 +1,21 @@
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        webpush:
+          type: tab
+          title: Web Push 
+          fields:
+            push.title:
+              type: text
+              label: Push Title
+              config-default@: page.title
+            push.desc:
+              type: textarea
+              label: Push Description
+              config-default@: page.content
+            push.icon:
+              type: filepicker
+              label: Push Image

@@ -2,6 +2,8 @@
 namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
+use Grav\Common\Data\Blueprints;
+use RocketTheme\Toolbox\Event\Event;
 
 class WebPushPlugin extends Plugin
 {
@@ -9,6 +11,7 @@ class WebPushPlugin extends Plugin
     {
         return [
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
+            'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
 
@@ -75,5 +78,26 @@ class WebPushPlugin extends Plugin
             OneSignal.push(function() {
               OneSignal.showHttpPrompt();
             });');
+    }
+    /**
+     * Extend page blueprints with SEO configuration options.
+     *
+     * @param Event $event
+     */
+    public function onBlueprintCreated(Event $event)
+ {
+     $newtype = $event['type'];
+     if (0 === strpos($newtype, 'modular/')) {
+        } else {
+            $blueprint = $event['blueprint'];
+        if ($blueprint->get('form/fields/tabs', null, '/')) {
+            
+            $blueprints = new Blueprints(__DIR__ . '/blueprints/');
+            $extends = $blueprints->get($this->name);
+            $blueprint->extend($extends, true);
+        
+        }
+        }
+        
     }
 }
