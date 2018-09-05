@@ -4,18 +4,18 @@ form:
       type: tabs
       active: 1
       fields:
-        webpush:
+        webpushfields:
           type: tab
           title: Web Push 
           fields:
-            push.title:
-              type: text
-              label: Push Title
-              config-default@: page.title
-            push.desc:
-              type: textarea
-              label: Push Description
-              config-default@: page.content
-            push.icon:
-              type: filepicker
-              label: Push Image
+            header.webpushtitle:
+              type: webpush_title
+              label: Notification Title
+            header.webpushmessage:
+              type: webpush_message
+              label: Notification Message
+            header.webpushimage:
+              type: mediapicker
+              folder: 'self@'
+              label: Select a file
+              preview_images: true

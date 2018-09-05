@@ -1,0 +1,12 @@
+{% extends "forms/field.html.twig" %}
+
+{% block input %}
+    <div class="form-data block size-2-3" data-grav-field="webpush_title">
+        <div class="form-input-wrapper">
+            {% if value %}{% set webpush_value = value %}
+            {% else %}{% set webpush_value = admin.page.title %}
+            {% endif %}
+            <input name="{{ (scope ~ field.name)|fieldName }}" value="{{ webpush_value }}" type="text">
+        </div>
+    </div>
+{% endblock %}

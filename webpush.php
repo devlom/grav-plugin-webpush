@@ -1,18 +1,48 @@
 <?php
 namespace Grav\Plugin;
 
-use Grav\Common\Plugin;
 use Grav\Common\Data\Blueprints;
+use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
 
 class WebPushPlugin extends Plugin
 {
+
     public static function getSubscribedEvents()
     {
         return [
             'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
-            'onBlueprintCreated' => ['onBlueprintCreated',  0]
+            'onPluginsInitialized' => ['onPluginsInitialized', 0],
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
         ];
+    }
+    /**
+     * Initialize configuration
+     */
+    public function onPluginsInitialized()
+    {
+        // Set default events
+        $events = [
+            'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            // 'onPageContentRaw' => ['onPageContentRaw', 0],
+        ];
+        // Set admin specific events
+        if ($this->isAdmin()) {
+            $this->active = false;
+            $events = [
+                'onBlueprintCreated' => ['onBlueprintCreated', 0],
+            ];
+        }
+        // Register events
+
+        $this->enable($events);
+    }
+
+    public static function CurrentTitle()
+    {
+        global $page;
+
+        return $page->find('admin.page');
     }
 
     public function onTwigSiteVariables()
@@ -80,24 +110,29 @@ class WebPushPlugin extends Plugin
             });');
     }
     /**
-     * Extend page blueprints with SEO configuration options.
+     * Extend page blueprints with WebPush configuration options.
      *
      * @param Event $event
      */
     public function onBlueprintCreated(Event $event)
- {
-     $newtype = $event['type'];
-     if (0 === strpos($newtype, 'modular/')) {
+    {
+        global $page;
+        $page = $this->grav['page'];
+        $newtype = $event['type'];
+        if (0 === strpos($newtype, 'modular/')) {
         } else {
             $blueprint = $event['blueprint'];
-        if ($blueprint->get('form/fields/tabs', null, '/')) {
-            
-            $blueprints = new Blueprints(__DIR__ . '/blueprints/');
-            $extends = $blueprints->get($this->name);
-            $blueprint->extend($extends, true);
-        
+            if ($blueprint->get('form/fields/tabs', null, '/')) {
+
+                $blueprints = new Blueprints(__DIR__ . '/blueprints/');
+                $extends = $blueprints->get($this->name);
+                $blueprint->extend($extends, true);
+
+            }
         }
-        }
-        
+    }
+    public function onTwigTemplatePaths()
+    {
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
 }
