@@ -1,7 +1,7 @@
 {% extends "forms/field.html.twig" %}
 
 {% block input %}
-    <div class="form-data block size-2-3" data-grav-field="webpush_title">
+    <div class="form-data block {{ field.size }}" data-grav-field="webpush_title">
         <div class="form-input-wrapper">
             {% if value %}{% set webpush_value = value %}
             {% else %}{% set webpush_value = admin.page.title %}

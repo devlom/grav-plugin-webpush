@@ -11,11 +11,20 @@ form:
             header.webpushtitle:
               type: webpush_title
               label: Notification Title
+              size: medium
             header.webpushmessage:
               type: webpush_message
+              size: large
               label: Notification Message
             header.webpushimage:
               type: mediapicker
               folder: 'self@'
+              size: large
               label: Select a file
               preview_images: true
+            header.webpushbutton:
+              type: checkboxes
+              label: Notification ready ?
+              options:
+                send: Send Notification
+              use: keys

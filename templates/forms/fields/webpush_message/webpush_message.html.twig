@@ -7,4 +7,6 @@
             {% endif %}
             <textarea name="{{ (scope ~ field.name)|fieldName }}">{{ webpush_value }}</textarea>
     </div>
+    <input type="hidden" name="data[header][webpushurl]" value="{{ admin.page.url(true) }}">
 {% endblock %}
+

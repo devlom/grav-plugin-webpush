@@ -7,7 +7,6 @@ use RocketTheme\Toolbox\Event\Event;
 
 class WebPushPlugin extends Plugin
 {
-
     public static function getSubscribedEvents()
     {
         return [
@@ -24,13 +23,13 @@ class WebPushPlugin extends Plugin
         // Set default events
         $events = [
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            // 'onPageContentRaw' => ['onPageContentRaw', 0],
         ];
         // Set admin specific events
         if ($this->isAdmin()) {
             $this->active = false;
             $events = [
                 'onBlueprintCreated' => ['onBlueprintCreated', 0],
+                'onAdminSave' => ['onAdminSave', 0],
             ];
         }
         // Register events
@@ -38,11 +37,61 @@ class WebPushPlugin extends Plugin
         $this->enable($events);
     }
 
-    public static function CurrentTitle()
+    public function onAdminSave(Event $event)
     {
         global $page;
 
-        return $page->find('admin.page');
+        $notification_check = $_POST['data']['header']['webpushbutton']['send'];
+
+        if ($notification_check == 1) {
+
+            function sendMessage($title, $message, $file, $url)
+            {
+                global $page;
+                $content = array(
+                    "en" => $message,
+                );
+                $headings = array(
+                    "en" => $title,
+                );
+                $fields = array(
+                    'app_id' => "de8a095d-216a-4aa7-b542-0010980dded3",
+                    'included_segments' => array(
+                        'All',
+                    ),
+                    'chrome_web_icon' => $page->url(true) . $file,
+                    'contents' => $content,
+                    'headings' => $headings,
+                    'url' => $url,
+                );
+
+                $fields = json_encode($fields);
+                print("\nJSON sent:\n");
+                print($fields);
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                    'Content-Type: application/json; charset=utf-8',
+                    'Authorization: Basic N2VkOTAzNTYtYWFiZC00YzA3LWEwMDMtZDg3MGRjMjViM2Fi',
+                ));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HEADER, false);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
+                $response = curl_exec($ch);
+                curl_close($ch);
+                return $response;
+            }
+
+            $title = $_POST['data']['header']['webpushtitle'];
+            $message = $_POST['data']['header']['webpushmessage'];
+            $file = $_POST['data']['header']['webpushimage'];
+            $url = $_POST['data']['header']['webpushurl'];
+            sendMessage($title, $message, $file, $url);
+        }
     }
 
     public function onTwigSiteVariables()
@@ -108,6 +157,8 @@ class WebPushPlugin extends Plugin
             OneSignal.push(function() {
               OneSignal.showHttpPrompt();
             });');
+        $this->grav['assets']
+            ->addJs('plugin://webpush/assets/helper.js');
     }
     /**
      * Extend page blueprints with WebPush configuration options.
@@ -123,11 +174,9 @@ class WebPushPlugin extends Plugin
         } else {
             $blueprint = $event['blueprint'];
             if ($blueprint->get('form/fields/tabs', null, '/')) {
-
                 $blueprints = new Blueprints(__DIR__ . '/blueprints/');
                 $extends = $blueprints->get($this->name);
                 $blueprint->extend($extends, true);
-
             }
         }
     }
