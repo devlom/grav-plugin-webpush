@@ -48,7 +48,7 @@ This VERY IMPORTANT step. You have to downlaod [OneSignal SDK Files](https://git
     https://yourdomain.com/OneSignalSDKWorker.js
     https://yourdomain.com/OneSignalSDKUpdaterWorker.js
 
-Please don't submit any bugs if files above does not exist in your domain. The same apply for subdomain https://yourdomain.com. Then files must be uploaded to subdomaine root:
+Please don't submit any bugs if files above does not exist in your domain. The same apply for subdomain https://yourdomain.com. Then files must be uploaded to subdomain root:
 
     https://subdomain.yourdomain.com/OneSignalSDKWorker.js
     https://subdomain.yourdomain.com/OneSignalSDKUpdaterWorker.js
@@ -89,6 +89,13 @@ If you use the admin plugin, you can install directly through the admin plugin b
 Before configuring this plugin, you should copy the `user/plugins/webpush/webpush.yaml` to `user/config/plugins/webpush.yaml` and only edit that copy. Plugin has around 50 configuration options. Feel free to experiment with those. 
 
 Note that if you use the admin plugin, a file with your configuration, and named webpush.yaml will be saved in the `user/config/plugins/` folder once the configuration is saved in the admin.
+
+## Usage
+You can of course send Notifications using onesignal.com WebPanel but we have better idea. Just use our awesome Web Push tab. Tab is added to every page. Just take a look: 
+
+![Web Push Tab](webpush_tab.png)
+
+All you have to do is polish preloaded data. Check "Send Notification" and hit "Save". Isn't that easy ? How AWESOME is that :) ? Good luck :)
 
 Credits
 ========================
