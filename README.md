@@ -36,11 +36,11 @@ First of all you will have to register account at [OneSignal](http://onesignal.c
 
 ![Select APP](select_app.png)
 
-As an integration please select "Custom Code" (importan):
+As an integration please select "Custom Code" (important):
 
 ![Custom Code](custom_code.png)
 
-That's it. Configure all needed fields (url, your icon and then hit Save).
+That's it. Configure all needed fields (url, your icon, safari and then hit Save).
 
 ### Download OneSignal SDK files
 
