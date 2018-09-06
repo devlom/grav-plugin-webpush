@@ -3,6 +3,7 @@ namespace Grav\Plugin;
 
 use Grav\Common\Data\Blueprints;
 use Grav\Common\Plugin;
+use Grav\Common\Uri;
 use RocketTheme\Toolbox\Event\Event;
 
 class WebPushPlugin extends Plugin
@@ -40,55 +41,59 @@ class WebPushPlugin extends Plugin
     public function onAdminSave(Event $event)
     {
         global $page;
+        if (isset($_POST['data']['header']['webpushbutton'])) {
+            $notification_check = $_POST['data']['header']['webpushbutton']['send'];
 
-        $notification_check = $_POST['data']['header']['webpushbutton']['send'];
+            global $app_id, $rest_id;
+            $app_id = $this->config->get('plugins.webpush.app_id');
+            $rest_id = $this->config->get('plugins.webpush.rest_id');
 
-        if ($notification_check == 1) {
+            if ($notification_check == 1) {
+                function sendMessage($title, $message, $file, $url)
+                {
+                    global $page, $app_id, $rest_id;
+                    $content = array(
+                        "en" => $message,
+                    );
+                    $headings = array(
+                        "en" => $title,
+                    );
+                    $fields = array(
+                        'app_id' => $app_id,
+                        'included_segments' => array(
+                            'All',
+                        ),
+                        'chrome_web_icon' => $page->url(true) . $file,
+                        'contents' => $content,
+                        'headings' => $headings,
+                        'url' => $url,
+                    );
 
-            function sendMessage($title, $message, $file, $url)
-            {
-                global $page;
-                $content = array(
-                    "en" => $message,
-                );
-                $headings = array(
-                    "en" => $title,
-                );
-                $fields = array(
-                    'app_id' => "de8a095d-216a-4aa7-b542-0010980dded3",
-                    'included_segments' => array(
-                        'All',
-                    ),
-                    'chrome_web_icon' => $page->url(true) . $file,
-                    'contents' => $content,
-                    'headings' => $headings,
-                    'url' => $url,
-                );
+                    $fields = json_encode($fields);
 
-                $fields = json_encode($fields);
-                
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                    'Content-Type: application/json; charset=utf-8',
-                    'Authorization: Basic N2VkOTAzNTYtYWFiZC00YzA3LWEwMDMtZDg3MGRjMjViM2Fi',
-                ));
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_HEADER, false);
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                        'Content-Type: application/json; charset=utf-8',
+                        'Authorization: Basic '. $rest_id .'',
+                    ));
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_HEADER, false);
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-                $response = curl_exec($ch);
-                curl_close($ch);
-                return $response;
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+                    return $response;
+                }
+
+                $title = $_POST['data']['header']['webpushtitle'];
+                $message = $_POST['data']['header']['webpushmessage'];
+                $file = $_POST['data']['header']['webpushimage'];
+                $url = $_POST['data']['header']['webpushurl'];
+                sendMessage($title, $message, $file, $url);
             }
-
-            $title = $_POST['data']['header']['webpushtitle'];
-            $message = $_POST['data']['header']['webpushmessage'];
-            $file = $_POST['data']['header']['webpushimage'];
-            $url = $_POST['data']['header']['webpushurl'];
-            sendMessage($title, $message, $file, $url);
         }
     }
 

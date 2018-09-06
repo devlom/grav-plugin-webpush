@@ -1,1 +1,40 @@
-enabled: true
+app_id: ''
+rest_id: ''
+safari_id: ''
+bell: '1'
+bell_subscribed: '1'
+bell_unread: '1'
+bell_size: small
+bell_position: bottom-left
+bell_theme: default
+bottom_offset: 20px
+left_offset: 20px
+right_offset: 20px
+firsttime: 'Click to subscribe to notifications'
+unsubscribed: 'Subscribe to notifications'
+subscribed: 'You''re subscribed to notifications'
+blocked: 'You''ve blocked notifications'
+message_subscribed: 'Thanks for subscribing!'
+message_resubscribed: 'You''re subscribed to notifications'
+message_unsubscribed: 'You won''t receive notifications again'
+main_dialog: 'Manage Site Notifications'
+main_dialog_subscribe: SUBSCRIBE
+main_dialog_unsubscribe: UNSUBSCRIBE
+blocked_dialog_title: 'Unblock Notifications'
+blocked_dialog_message: 'Follow these instructions to allow notifications'
+action_message: 'wants to show notifications'
+auto_accept: 'Click Allow'
+sitename: 'http://devlom.com'
+example_desktop_title: 'This is an example notification'
+example_desktop_message: 'Notifications will appear on your desktop'
+example_mobile_title: 'Example notification'
+example_mobile_message: 'Notifications will appear on your device'
+example_caption: '(you can unsubscribe anytime)'
+accept: CONTINUE
+cancel: 'NO THANKS'
+welcome_title: 'Hello There'
+welcome_message: 'Thanks for subscribing!'
+welcome_url: 'http://devlom.com'
+auto_prompt: '1'
+example_title: 'This is an example notification'
+example_message: 'Notifications will appear on your desktop'

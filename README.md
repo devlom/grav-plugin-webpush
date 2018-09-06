@@ -27,7 +27,41 @@ The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgra
 
 ## Installation
 
-Installing the Web Push Notifications plugin is done in few steps. The GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
+Installing the Web Push Notifications plugin is done in few steps. 
+
+### Register [OneSignal](http://onesignal.com) account.
+
+First of all you will have to register account at [OneSignal](http://onesignal.com). After registration, please add new app by clicking "Add App" button in your dashboard. Then select "Web Push"
+
+![Select APP](select_app.png)
+
+As an integration please select "Custom Code" (importan):
+
+![Custom Code](custom_code.png)
+
+That's it. Configure all needed fields (url, your icon and then hit Save).
+
+### Download OneSignal SDK files
+
+This VERY IMPORTANT step. You have to downlaod [OneSignal SDK Files](https://github.com/OneSignal/OneSignal-Website-SDK/releases/download/https-integration-files/OneSignal-Web-SDK-HTTPS-Integration-Files.zip) and you have to place them on your domain root. So for example. Your Grav installation is placed at **https://yourdomain.com**. You have to unzip whole directory and upload all files from this zip to your domain. So they are accessible like:
+
+    https://yourdomain.com/OneSignalSDKWorker.js
+    https://yourdomain.com/OneSignalSDKUpdaterWorker.js
+
+Please don't submit any bugs if files above does not exist in your domain. The same apply for subdomain https://yourdomain.com. Then files must be uploaded to subdomaine root:
+
+    https://subdomain.yourdomain.com/OneSignalSDKWorker.js
+    https://subdomain.yourdomain.com/OneSignalSDKUpdaterWorker.js
+
+What about subdirectories ? The same rule apply. Service worker files must be on your domain root. So if you have Grav installation like **https://yourdomain.com/grav**, then files has to be on your domain root: 
+
+    https://yourdomain.com/OneSignalSDKWorker.js
+    https://yourdomain.com/OneSignalSDKUpdaterWorker.js
+
+Don't ask me why is that. This is just how service workers.. works :D. If you're familiar with PWA, then that shouldn't be a news for you :)
+
+After that just continue with regular Grav install. 
+
 
 ### GPM Installation (Preferred)
 
@@ -39,7 +73,7 @@ This will install the Web Push Notifications plugin into your `/user/plugins` di
 
 ### Manual Installation
 
-To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `webpush`. You can find these files on [GitHub](https://github.com/hexplor/grav-plugin-webpush) or via [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
+To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `webpush`. You can find these files on [GitHub](https://github.com/devlom/grav-plugin-webpush) or via [GetGrav.org](http://getgrav.org/downloads/plugins#extras).
 
 You should now have all the plugin files under
 
@@ -52,55 +86,19 @@ You should now have all the plugin files under
 If you use the admin plugin, you can install directly through the admin plugin by browsing the `Plugins` tab and clicking on the `Add` button.
 
 ## Configuration
-Before configuring this plugin, you should copy the `user/plugins/webpush/webpush.yaml` to `user/config/plugins/webpush.yaml` and only edit that copy.
-
-Firstly you will need to register your app / website with Twitters developer site. (https://dev.twitter.com) you will then get your consumer key, consumer secret, access token and your access token secret. You then need to add them to your config file.
-
-Here is the default configuration and an explanation of available options:
-
-```yaml
-enabled: true
-twitter_id: devlomthemes #twitter screen name, owner in Access Token settings
-tweets_to_display: 5, # Number of tweets you would like to display.
-ignore_replies : true # Ignore replies from the timeline. 
-include_rts: true # Include retweets. 
-consumerkey: XXX #Consumer Key (API Key)
-consumersecret: XXX #Consumer Secret (API Secret)
-accesstoken: XXX #Access Token
-accesstokensecret: XXX #Access Token Secret
-built_in_css: true 
-fontawesome: true
-```
+Before configuring this plugin, you should copy the `user/plugins/webpush/webpush.yaml` to `user/config/plugins/webpush.yaml` and only edit that copy. Plugin has around 50 configuration options. Feel free to experiment with those. 
 
 Note that if you use the admin plugin, a file with your configuration, and named webpush.yaml will be saved in the `user/config/plugins/` folder once the configuration is saved in the admin.
-
-Usage
-========================
-Use webpush/templates/partials/webpush.html.twig template with built in styling or build your own theme. 
-
-Notes
-========================
-
-Twitter feeds may contain UTF-8 characters. I have found that running PHP’s utf_decode method on tweets didn’t have the expected result, so my recommendation is to instead set the charset of your HTML page to UTF-8. Really we should all be doing this anyway. (http://www.w3.org/International/O-charset)
-
 
 Credits
 ========================
 
-webpush-php-o-auth by andrewbiggart
-https://github.com/andrewbiggart/webpush-php-o-auth
-
-Orginally using Pixel Acres script (http://f6design.com/journal/2010/10/07/display-recent-twitter-tweets-using-php/). But since Twitter has retired API v1.0, the script no longer worked because it didn't include authentication. I have now modified the script to include authentication using API v1.1.
-
-The hashtag/username parsing in andrewbiggart example is from Get Twitter Tweets (http://snipplr.com/view/16221/get-twitter-tweets/) by gripnrip (http://snipplr.com/users/gripnrip/).
-
-andrewbiggart RSS parsing is based on replies in the forum discussion "embedding twitter tweets" on the Boagworld website. (http://boagworld.com/forum/comments.php?DiscussionID=4639)
-
-Authentication with Twitter uses twitteroauth. (https://github.com/abraham/twitteroauth)
+OneSignal Wordpress APP
+https://wordpress.org/plugins/onesignal-free-web-push-notifications/
 
 ## To Do
 
-- [ ] Add Grav Caching
+- [ ] Add Multilang Support
 
 License
 ========================
