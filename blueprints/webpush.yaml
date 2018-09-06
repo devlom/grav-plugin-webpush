@@ -20,7 +20,7 @@ form:
               type: mediapicker
               folder: 'self@'
               size: large
-              label: Select a file
+              label: Thumbnail
               preview_images: true
             header.webpushbutton:
               type: checkboxes
