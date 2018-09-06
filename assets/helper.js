@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    $('input:checkbox').removeAttr('checked');
+    $('[data-grav-field-name="data[header][webpushbutton]"] input:checkbox').removeAttr('checked');
 })

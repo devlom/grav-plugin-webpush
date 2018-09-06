@@ -6,7 +6,7 @@
 The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgrav/grav) based on [OneSignal](http://onesignal.com) service. Web push notifications are messages that come from a website. You get them on your desktop or device even when the website is not open in your browser. It is a new marketing channel to re engage your site visitors without knowing their email or other contact details. All major browsers support Web Push. Android devices may also receive Web Push notifications, in addition to notifications from apps.
 
 ## Some of OneSignal features
-* 15 Minute Setup
+* Quick Setup
 * Real Time Tracking
 * Incredibly Scalable
 * A/B Test Messages
@@ -27,7 +27,7 @@ The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgra
 
 ## Installation
 
-Installing the Web Push Notifications plugin can be done in one of two ways. The GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
+Installing the Web Push Notifications plugin is done in few steps. The GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
 
 ### GPM Installation (Preferred)
 

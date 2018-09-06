@@ -5,10 +5,11 @@ icon: bell
 author:
   name: Devlom
   email: info@devlom.com
-homepage: https://github.com/Devlom/grav-plugin-webpush
+  url: https://devlom.com
+homepage: https://github.com/devlom/grav-plugin-webpush
 keywords: grav, plugin, onesignal, web push notifications, notifications, push
-bugs: https://github.com/Devlom/grav-plugin-webpush/issues
-docs: https://github.com/Devlom/grav-plugin-webpush/blob/develop/README.md
+bugs: https://github.com/devlom/grav-plugin-webpush/issues
+docs: https://github.com/devlom/grav-plugin-webpush/blob/develop/README.md
 license: MIT
 
 form:
