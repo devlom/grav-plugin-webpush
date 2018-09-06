@@ -6,13 +6,14 @@
 The **Web Push Notifications** Plugin is for [Grav CMS](http://github.com/getgrav/grav) based on [OneSignal](http://onesignal.com) service. Web push notifications are messages that come from a website. You get them on your desktop or device even when the website is not open in your browser. It is a new marketing channel to re engage your site visitors without knowing their email or other contact details. All major browsers support Web Push. Android devices may also receive Web Push notifications, in addition to notifications from apps.
 
 ## Some of OneSignal features
-* Quick Setup
-* Real Time Tracking
-* Incredibly Scalable
-* A/B Test Messages
-* Segmentation Targeting
-* Automatic Delivery
-* Supports Chrome, Firefox, Safari, Microsoft Edge, Opera, Yandex, Samsung Browser, UC Browser, Interner Explorter and all Android browsers.
+* **Supports Chrome** (Desktop & Android), **Safari** (Mac OS X), **Microsoft Edge** (Desktop & Android), **Opera** (Desktop & Android) and **Firefox** (Desktop & Android) on both HTTP and HTTPS sites.
+* **Automatic Notifications** - Send notifications to followers every time you publish a new post. Or set up a reminder that gets automatically sent to them if they haven’t visited for a few days.
+* **Targeting Segments** - Send notifications to specific visitors based on language, number of times they’ve visited your blog, or even set up your own user attributes that you can target.
+* **Opt-In Customization** - Choose when and how to ask your visitors to opt-in to browser notifications. Customize the prompt they first see.
+* **Real Time Analytics** - See your notifications being delivered in real time, and watch them as they convert into visitors.
+* **A/B Testing** - Try out different messages to a smaller set of your visitors to figure out which messages are more effective and then send the more effective message to the rest of your visitors!
+* **Scheduled Notifications** - Schedule notifications to be delivered in the future, based on a user’s time zone, or even based on the same time of day they last visited your website.
+**All completely free. No fees or limitations.**
 
 ## Why should you use Web Push Notifications – what are the advantages?
 * WEB-SCALE REACH - Chrome, Firefox, and Safari combined have a market share of 75%+, meaning the reach of web push notifications is nearly a billion users.
